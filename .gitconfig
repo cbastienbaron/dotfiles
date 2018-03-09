@@ -1,14 +1,37 @@
+[alias]
+	# View the current working tree status using the short format
+	s = status -s
+
+	# View abbreviated SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+	# Switch to a branch, creating it if necessary
+	co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+	# Color graph log view
+	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n"
+
+	# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
+    # Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+
+	alias=!git config -l | grep ^alias | cut -c 7- | sort
+
 [user]
 	name = cbastienbaron
 	email = "baronsebastien@gmail.com"
 	signingkey = 3F1C80C6
+
 [core]
 	autocrlf = input
+	editor = nano
+
 [commit]
 	gpgsign = false
-
-[alias]
-	remotes = remote -v
 
 [color]
 	ui = true

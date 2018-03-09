@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# File: .functions
-# Description:
-#   contains all functions defined by the user. Separated from shell rc files
-#   for portability between different machines.
-#   Avoid syntax and commands not portable to other different setups,
-#   check out http://hyperpolyglot.org/unix-shells for more information
-
+##############################################################################
+# functions
+# -----------
+# Usefull bash functions
+#
+# :authors: Sébastien BARON, @cbastienbaron
+# :date: 18 March 2018
+# :version: 0.0.1
+##############################################################################
 
 # run command in the background
 background() {
@@ -15,7 +17,7 @@ background() {
 }
 
 # serve PWD as web server
-serve() {
+function serve() {
 	# serve [port] [directory]
 	local port=${1:-8000}
 	local dir=$2
