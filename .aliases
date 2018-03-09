@@ -19,8 +19,6 @@ alias du='du -h'
 # Utilities
 # -------------------------------------------------------------------
 # open with system default application
-alias o='open_command'
-alias o.='o .'
-# Lock the screen (when going AFK)
+alias o='thunar'
 alias afk="i3lock -c 000000"
-
+alias notify=notify-send "$1"
