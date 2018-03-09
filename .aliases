@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# change directory
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# hdd
+alias df='df -h'
+alias du='du -h'
+
+## utilities
+
+# open with system default application
+alias o='open_command'
+alias o.='o .'
+
+# Lock the screen (when going AFK)
+alias afk="i3lock -c 000000"

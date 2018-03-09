@@ -1,0 +1,14 @@
+[user]
+	name = cbastienbaron
+	email = "baronsebastien@gmail.com"
+	signingkey = 3F1C80C6
+[core]
+	autocrlf = input
+[commit]
+	gpgsign = false
+
+[alias]
+	remotes = remote -v
+
+[color]
+	ui = true
