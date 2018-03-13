@@ -25,6 +25,8 @@ alias notify=notify-send "$1"
 alias dl="cd ~/Téléchargements"
 alias g="git"
 alias h="history"
+#end of day
+alias eod="notify 'Heyyy ! End Of Day dude' && sudo shutdown now"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
