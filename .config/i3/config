@@ -68,7 +68,7 @@ bindsym $mod+q focus parent
 
 # WORKSPACES DEFINITIONS
 #code
-set $w1 "1:&#xf121;"
+set $w1 "1:>$__;"
 #server
 set $w2 "2:&#xf233;"
 #spotify
@@ -147,3 +147,5 @@ bar {
 	font pango:monospace 8
 	status_command i3status --config ~/.config/i3/status.conf 2> ~/.i3bar.out
 }
+
+exec --no-startup-id feh --bg-scale /home/bastien/Images/IDR_THEME_NTP_BACKGROUND.png
