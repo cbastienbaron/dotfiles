@@ -41,10 +41,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h split h;exec notify-send 'tile horizontally'
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split v;exec notify-send 'tile vertically'
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -66,27 +66,47 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $monitor_one "HDMI-0"
+set $monitor_two "HDMI-1"
+
+
 # WORKSPACES DEFINITIONS
+#web
+set $w1 "1:web"
 #code
-set $w1 "1:>$__;"
-#server
-set $w2 "2:&#xf233;"
+set $w2 "2:code"
 #spotify
-set $w3 "3:&#xf1bc;"
-#pingoo
-set $w4 "4:&#xf17c;"
+set $w3 "3:spotify"
+#server
+set $w4 "4:server"
+#lab
+set $w5 "5:lab"
+
+# Bind the workspaces for monitor one
+workspace $w1 output $monitor_one
+workspace $w4 output $monitor_one
+workspace $w5 output $monitor_one
+
+# Bind the workspaces for monitor two
+workspace $w3 output $monitor_two
+workspace $w2 output $monitor_two
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
 bindsym $mod+2 workspace $w2
 bindsym $mod+3 workspace $w3
 bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+
+bindsym $mod+Control+l move workspace to output left
+bindsym $mod+Control+r move workspace to output right
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $w1
 bindsym $mod+Shift+2 move container to workspace $w2
 bindsym $mod+Shift+3 move container to workspace $w3
 bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
 bindsym $mod+Tab workspace back_and_forth
 
 focus_on_window_activation urgent
@@ -94,6 +114,13 @@ focus_on_window_activation urgent
 # move workspace to other monitors
 bindsym $mod+Shift+Control+Left move workspace to output left
 bindsym $mod+Shift+Control+Right move workspace to output right
+
+
+# Open applications on specific workspaces
+#assign [class="Spotify"] $w0
+#for_window [class="Google-chrome"] move to workspace $w1
+for_window [class="^jetbrains-.+"] move to workspace $w2
+for_window [class="Spotify"] move to workspace $w3
 
 # next/prev workspace
 bindsym $mod+Control+Right workspace next
@@ -140,12 +167,11 @@ mode "resize" {
 }
 
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
 
-	font pango:monospace 8
-	status_command i3status --config ~/.config/i3/status.conf 2> ~/.i3bar.out
-}
+client.focused          #002b36 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #002b36 #073642 #839496 #073642
+client.unfocused        #002b36 #073642 #839496 #073642
+client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 
-exec --no-startup-id feh --bg-scale /home/bastien/Images/IDR_THEME_NTP_BACKGROUND.png
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id feh --bg-scale /home/bastien/Images/debian.png
