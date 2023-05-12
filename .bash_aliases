@@ -42,7 +42,7 @@ alias l="ls -laFH ${colorflag}"
 alias grep='grep --color=auto '
 
 # IP addresses
-alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias pubip="curl https://ifconfig.me"
 
 # vhosts
 alias hosts='sudo vim /etc/hosts'
